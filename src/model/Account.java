@@ -1,4 +1,4 @@
-package com.serhat.atm;
+package model;
 
 public class Account {
 
