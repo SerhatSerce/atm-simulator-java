@@ -26,7 +26,9 @@ UI → Service → Repository → Model
 - **Model Layer**  
   Represents domain objects (Account).
 
-# Project Structure
+## Project Structure
+
+```
 com.serhat.atm
 │
 ├── model
@@ -44,7 +46,6 @@ com.serhat.atm
 │
 └── AtmApp.java
 ```
-
 # Technologies
 
 - Java
