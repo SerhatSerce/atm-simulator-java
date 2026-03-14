@@ -1,74 +1,159 @@
-# ATM Simulator (Java)
-Console-based ATM simulation built with Java using OOP and layered architecture principles.
-This project demonstrates how a simple banking ATM system can be structured using clean separation of concerns such as **Model, Repository, Service, and UI layers**.
+# Library Management API (Spring Boot)
+
+A simple **Library Management REST API** built with **Java, Spring Boot and PostgreSQL**.
+This project demonstrates how a backend application can be structured using **layered architecture** with clear separation between **Controller, Service, Repository and Entity layers**.
+
+---
 
 # Features
-- Multi-user login (PIN based authentication)
-- Balance inquiry
-- Deposit money
-- Withdraw money
-- Basic input validation
-- Layered architecture (Model, Repository, Service, UI)
+
+* Add book
+* List all books
+* Update book
+* Delete book
+* DTO based request structure
+* Input validation
+* Layered architecture (Controller → Service → Repository)
+
+---
 
 # Architecture
+
 The project follows a simplified layered architecture:
-UI → Service → Repository → Model
 
-- **UI Layer**  
-  Handles user interaction via console.
+Controller → Service → Repository → Entity → Database
 
-- **Service Layer**  
-  Contains business logic such as authentication and account operations.
+* **Controller Layer**
+  Handles HTTP requests and API endpoints.
 
-- **Repository Layer**  
-  Simulates a data source and stores account data.
+* **Service Layer**
+  Contains the business logic of the application.
 
-- **Model Layer**  
-  Represents domain objects (Account).
+* **Repository Layer**
+  Responsible for database operations using Spring Data JPA.
 
-## Project Structure
+* **Entity Layer**
+  Represents database tables.
+
+* **Database**
+  PostgreSQL database storing book records.
+
+---
+
+# Project Structure
 
 ```
-com.serhat.atm
+com.serhat.library
 │
-├── model
-│   └── Account.java
-│
-├── repository
-│   └── AccountRepository.java
+├── controller
+│   └── BookController.java
 │
 ├── service
-│   ├── AccountService.java
-│   └── AuthService.java
+│   └── BookService.java
 │
-├── ui
-│   └── AtmConsoleUI.java
+├── repository
+│   └── BookRepository.java
 │
-└── AtmApp.java
+├── entity
+│   └── Book.java
+│
+├── dto
+│   └── BookRequest.java
+│
+└── LibraryManagementApiApplication.java
 ```
+
+---
+
 # Technologies
 
-- Java
-- Object Oriented Programming (OOP)
-- Layered Architecture
-- IntelliJ IDEA
+* Java 17
+* Spring Boot
+* Spring Data JPA
+* Hibernate
+* PostgreSQL
+* Maven
+* IntelliJ IDEA
+
+---
+
+# API Endpoints
+
+| Method | Endpoint      | Description    |
+| ------ | ------------- | -------------- |
+| GET    | `/books`      | List all books |
+| POST   | `/books`      | Add a new book |
+| PUT    | `/books/{id}` | Update a book  |
+| DELETE | `/books/{id}` | Delete a book  |
+
+---
+
+# Example Request
+
+POST `/books`
+
+```
+{
+ "title": "Clean Code",
+ "author": "Robert Martin"
+}
+```
+
+---
+
+# Example Response
+
+```
+[
+ {
+   "id": 1,
+   "title": "Clean Code",
+   "author": "Robert Martin"
+ }
+]
+```
+
+---
+
+# Database
+
+Database used in this project:
+
+```
+library_db
+```
+
+Table:
+
+```
+books
+```
 
 ---
 
 # How to Run
+
 1. Clone the repository
-git clone https://github.com/SerhatSerce/atm-simulator-java.git
+
+```
+git clone https://github.com/SerhatSerce/library-management-api.git
+```
+
 2. Open the project in **IntelliJ IDEA**
-3. Run the application:
-AtmApp.java
 
-# Example Accounts
+3. Configure PostgreSQL database
 
-| PIN | Balance |
-|-----|--------|
-| 1111 | 1000 |
-| 2222 | 500 |
-| 3333 | 2000 |
+4. Run the application
+
+```
+LibraryManagementApiApplication.java
+```
+
+Application will start at:
+
+```
+http://localhost:8080
+```
 
 ---
 
@@ -76,7 +161,9 @@ AtmApp.java
 
 This project was created to practice:
 
-- Java OOP
-- Layered architecture
-- Clean code structure
-- Basic service / repository separation
+* Spring Boot backend development
+* REST API design
+* Layered architecture
+* Spring Data JPA
+* PostgreSQL integration
+* DTO and validation usage
